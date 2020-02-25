@@ -1,5 +1,5 @@
 {
-  "secret": "ngEurope rocks!",
+  "secret": "bilibili_helper!",
   "audience": "nodejs-jwt-auth",
-  "issuer": "https://gonto.com"
+  "issuer": "http://www.bilibili.com/momoko8443"
 }
