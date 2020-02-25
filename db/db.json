@@ -1,26 +1,39 @@
 {
   "helps": [
     {
-      "id": "1582629839599_av90870822",
+      "id": "1582643448051_av90870822",
       "avcode": "av90870822",
       "requester": "momoko8443",
-      "score": 3,
+      "score": 6,
       "helpers": [
         {
-          "helper": "momoko8443",
+          "helper": "sakura8443",
           "score": 3
         }
       ],
-      "create_time": 1582629839599
+      "status": 1,
+      "create_time": 1582643448051
     },
     {
-      "id": "1582629864836_av90870822",
-      "avcode": "av90870822",
-      "requester": "momoko8443",
+      "id": "1582644345483_av41500921",
+      "avcode": "av41500921",
+      "requester": "sakura8443",
       "score": 0,
       "helpers": [],
-      "create_time": 1582629864836
+      "status": 1,
+      "create_time": 1582644345483
     }
   ],
-  "users": []
+  "users": [
+    {
+      "username": "momoko8443",
+      "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+      "coin": 90
+    },
+    {
+      "username": "sakura8443",
+      "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+      "coin": 9
+    }
+  ]
 }

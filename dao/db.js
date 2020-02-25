@@ -15,7 +15,7 @@ module.exports = {
 		return db.get('users').push({
 			username: username,
 			password: password,
-			coin: 10
+			coin: coin
 		}).write();
 	},
 	getUser(username) {
@@ -47,15 +47,22 @@ module.exports = {
 			requester: requester,
 			score: 0,
 			helpers: [],
+			status: 1,
 			create_time: now
 		}
-		return db.get('helps').push(help).write();
+		db.get('helps').push(help).write();
+		return help;
 	},
 	getHelp(avcode) {
 		return db.get('helps').find({
 			avcode: avcode
 		}).value();
 	},
+	updateHelp(avcode,newPart){
+		return db.get('helps').find({
+			avcode: avcode
+		}).assign(newPart).write();
+	},	
 	isHelped(avcode, helper) {
 		let currentHelpers = db.get('helps').find({
 			avcode: avcode
@@ -85,10 +92,17 @@ module.exports = {
 			score: currentScore + score
 		}).write();
 	},
-	getHelpItems() {
+	getLatestHelpItems(helper) {
 		return db.get('helps')
-		.filter((val) => {
-			return val.score < 30
+		.filter((item) => {
+			let helped = false;
+			for (let i = 0; i < item.helpers.length; i++) {
+				if(helpers[i] === helper){
+					helped = true;
+					break;
+				}
+			}
+			return item.status === 1 && item.score < 30 && !helped;
 		})
 		.sortBy('score').take(10).value();
 	}

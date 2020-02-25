@@ -22,9 +22,9 @@ describe('Test dao', function () {
         });
     });
 
-    describe('#getHelpItems', function () {
+    describe('#getLatestHelpItems', function () {
         it('should isHelped success', function () {
-            let result = dao.getHelpItems();
+            let result = dao.getLatestHelpItems('momoko');
             console.log(result);
             assert.equal(1, 1);
         });
