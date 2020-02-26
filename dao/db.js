@@ -95,15 +95,15 @@ module.exports = {
 	getLatestHelpItems(helper) {
 		return db.get('helps')
 		.filter((item) => {
-			let helped = false;
-			for (let i = 0; i < item.helpers.length; i++) {
-				if(helpers[i] === helper){
-					helped = true;
-					break;
-				}
-			}
 			return item.status === 1 && item.score < 30 && !helped;
 		})
 		.sortBy('score').take(10).value();
+	},
+	getAllHelpItems(helper){
+		return db.get('helps')
+		.filter((item) => {
+			return item.status === 1;
+		})
+		.sortBy('score').value();
 	}
 }

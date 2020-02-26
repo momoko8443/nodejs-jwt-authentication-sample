@@ -23,11 +23,14 @@ module.exports = {
         if(isHelped){
             return null;
         }
-        if(isNaN(score) || score > 3){
+        if(isNaN(score) || score > 4){
             return null;
         }
         dao.appendHelper(avcode, helper, score);
         return dao.incrementUserCoin(helper,score);
+    },
+    getAllHelpItems(helper){
+        return dao.getAllHelpItems(helper);
     },
     getHelpItems(helper){
         return dao.getLatestHelpItems(helper);

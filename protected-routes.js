@@ -27,7 +27,7 @@ function requireScope(scope) {
 
 app.use('/api/protected', jwtCheck, requireScope('full_access'));
 
-app.get('/api/protected/user/', function (req, res) {
+app.get('/api/protected/user', function (req, res) {
 	let requester = req.user.aud;
 	let user = userService.getUser(requester);
 	user = _.omit(user,'password');
@@ -49,7 +49,7 @@ app.post('/api/protected/helps', function (req, res) {
 });
 app.get('/api/protected/helps', function (req, res) {
 	let requester = req.user.aud;
-	let helps = helpService.getHelpItems(requester);
+	let helps = helpService.getAllHelpItems(requester);
 	return res.status(200).send(helps);
 });
 
@@ -67,7 +67,7 @@ app.get('/api/protected/helps/:avcode', function (req, res) {
 app.put('/api/protected/helps/:avcode/helpers', function (req, res) {
 	let avcode = req.params.avcode;
 	let helper = req.user.aud;
-	let score = req.body.score;
+	let score = parseInt(req.body.score);
 	let _helper = helpService.doHelp(avcode,helper,score);
 	if(_helper){
 		_helper = _.omit(_helper,'password');
